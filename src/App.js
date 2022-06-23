@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EmpleadosForm from "./components/empleados/EmpleadosForm";
+import EmpleadosEdit from "./components/empleados/EmpleadosEdit";
+import EmpleadosList from "./components/empleados/EmpleadosList";
+import PlaylistcontracksList from "./components/playlistcontracks/PlaylistcontracksList";
+import Menu from "./components/Navbar";
+import { Container } from "@mui/material";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Menu />
+      <Container>
+        <Routes>
+          <Route path="/" element={<EmpleadosList />} />
+          <Route path="/empleados/new" element={<EmpleadosForm />} />
+          <Route path="/empleados/:id/edit" element={<EmpleadosEdit />} />
+          <Route
+            path="/playlistcontracks"
+            element={<PlaylistcontracksList />}
+          />
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 }
-
-export default App;
